@@ -1,0 +1,43 @@
+{
+ "id": "cai",
+ "version": "0.38.1",
+ "name": "Cai ou Não Cai",
+ "sub": "Demolições em equipa",
+ "tag": "Cargas no sítio certo, prédio no sítio certo.",
+ "accent": "#f2c230",
+ "accent2": "#5a3d10",
+ "bg": "#1a1612",
+ "solo": [
+  "Trabalhar sozinho",
+  "Fazer as obras a solo"
+ ],
+ "host": [
+  "Abrir a empresa à malta",
+  "Até 4 amigos, com código de 4 letras"
+ ],
+ "loading": "A contar as dinamites…",
+ "menu": {
+  "solo": [
+   "Trabalhar sozinho",
+   "Fazer as obras a solo"
+  ],
+  "host": [
+   "Abrir a empresa à malta",
+   "Até 4 amigos, com código de 4 letras"
+  ],
+  "join": "Entrar na obra de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Pousar o capacete",
+  "nameLabel": "Encarregado:",
+  "pause": {
+   "title": "Pausa",
+   "resume": "Voltar à obra",
+   "invite": "Convidar amigos (Shift+Tab)",
+   "opts": "Opções de som, rato e gráficos",
+   "leave": "Voltar ao menu",
+   "exit": "Pousar o capacete (fechar o jogo)"
+  }
+ },
+ "hash": "f7a4bc5e9da47fa46024ca48489a426fe4e4a2228131b5fca42ffce61abe1bc2"
+}

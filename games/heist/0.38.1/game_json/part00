@@ -1,0 +1,43 @@
+{
+ "id": "heist",
+ "version": "0.38.1",
+ "name": "Assalto com Amigos",
+ "sub": "Assaltos a bancos, em equipa",
+ "tag": "Entrem como clientes, saiam como lendas.",
+ "accent": "#e3c47a",
+ "accent2": "#5a3d10",
+ "bg": "#0f1d19",
+ "solo": [
+  "Golpe a solo",
+  "Treinar o golpe sem testemunhas"
+ ],
+ "host": [
+  "Reunir o gangue",
+  "Recebe um código de 4 letras para o gangue"
+ ],
+ "loading": "A engomar as cartolas…",
+ "menu": {
+  "solo": [
+   "Golpe a solo",
+   "Treinar o golpe sem testemunhas"
+  ],
+  "host": [
+   "Reunir o gangue",
+   "Recebe um código de 4 letras para o gangue"
+  ],
+  "join": "Entrar no gangue de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Sair à francesa",
+  "nameLabel": "Alcunha:",
+  "pause": {
+   "title": "Pausa no golpe",
+   "resume": "Continuar o golpe",
+   "invite": "Chamar o gangue (Shift+Tab)",
+   "opts": "Opções de som, rato e gráficos",
+   "leave": "Voltar ao menu",
+   "exit": "Sair à francesa (fechar o jogo)"
+  }
+ },
+ "hash": "0ec76392627fb9e5c4ecf5ea26848cb0e6778850742d0c36d3b5be6e8ab2629f"
+}

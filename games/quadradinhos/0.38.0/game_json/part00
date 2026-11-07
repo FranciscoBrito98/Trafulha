@@ -1,0 +1,43 @@
+{
+ "id": "quadradinhos",
+ "version": "0.38.0",
+ "name": "Quadradinhos",
+ "sub": "Um mundo de blocos para a malta",
+ "tag": "Parte, constrói e aguenta a noite.",
+ "accent": "#7cc24a",
+ "accent2": "#2a4a12",
+ "bg": "#122014",
+ "solo": [
+  "Jogar sozinho",
+  "Sobrevivência ou Criativo"
+ ],
+ "host": [
+  "Abrir o mundo à malta",
+  "Até 4 amigos, com código de 4 letras"
+ ],
+ "loading": "A cortar a cortiça…",
+ "menu": {
+  "solo": [
+   "Jogar sozinho",
+   "Sobrevivência ou Criativo"
+  ],
+  "host": [
+   "Abrir o mundo à malta",
+   "Até 4 amigos, com código de 4 letras"
+  ],
+  "join": "Entrar no mundo de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Arrumar a picareta",
+  "nameLabel": "Construtor:",
+  "pause": {
+   "title": "Pausa",
+   "resume": "Voltar ao mundo",
+   "invite": "Convidar amigos (Shift+Tab)",
+   "opts": "Opções de som, rato e gráficos",
+   "leave": "Guardar e voltar ao menu",
+   "exit": "Arrumar a picareta (fechar o jogo)"
+  }
+ },
+ "hash": "b409862c6649d12e3983e431ba66d5eacb8144df32490e415be8228b9566a37f"
+}

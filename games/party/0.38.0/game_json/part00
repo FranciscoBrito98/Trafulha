@@ -1,0 +1,43 @@
+{
+ "id": "party",
+ "version": "0.38.0",
+ "name": "Party Games",
+ "sub": "10 mini-jogos malucos",
+ "tag": "Seis rondas, um pódio, zero amizades intactas.",
+ "accent": "#ff6a8a",
+ "accent2": "#5a1a5a",
+ "bg": "#2a1240",
+ "solo": [
+  "Jogar com bots",
+  "Os bots também querem ganhar"
+ ],
+ "host": [
+  "Abrir a festa",
+  "Até 4 amigos, com código de 4 letras"
+ ],
+ "loading": "A encher os balões…",
+ "menu": {
+  "solo": [
+   "Jogar com bots",
+   "Os bots também querem ganhar"
+  ],
+  "host": [
+   "Abrir a festa",
+   "Até 4 amigos, com código de 4 letras"
+  ],
+  "join": "Entrar na festa de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Ir para casa",
+  "nameLabel": "Nome:",
+  "pause": {
+   "title": "Intervalo",
+   "resume": "Voltar à festa",
+   "invite": "Convidar amigos (Shift+Tab)",
+   "opts": "Opções de som, rato e gráficos",
+   "leave": "Sair da festa",
+   "exit": "Ir para casa (fechar o jogo)"
+  }
+ },
+ "hash": "246ba7d728b8622cc6840e28a8679831aaad24bb0ea1e4d1985e4c774f9cfafc"
+}

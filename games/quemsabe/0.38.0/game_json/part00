@@ -1,0 +1,43 @@
+{
+ "id": "quemsabe",
+ "version": "0.38.0",
+ "name": "Quem Sabe, Sabe!",
+ "sub": "O concurso do milhão, em pixel art",
+ "tag": "15 perguntas. Um milhão. Zero vergonha.",
+ "accent": "#ffd040",
+ "accent2": "#2a3480",
+ "bg": "#0e1030",
+ "solo": [
+  "Jogar sozinho",
+  "15 perguntas até ao milhão"
+ ],
+ "host": [
+  "Abrir o estúdio à malta",
+  "Até 4 concorrentes, com código de 4 letras"
+ ],
+ "loading": "A afinar os holofotes…",
+ "menu": {
+  "solo": [
+   "Jogar sozinho",
+   "15 perguntas até ao milhão"
+  ],
+  "host": [
+   "Abrir o estúdio",
+   "Até 4 concorrentes, com código de 4 letras"
+  ],
+  "join": "Entrar no estúdio de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Sair do estúdio",
+  "nameLabel": "Concorrente:",
+  "pause": {
+   "title": "Intervalo",
+   "resume": "Voltar ao concurso",
+   "invite": "Convidar amigos (Shift+Tab)",
+   "opts": "Opções",
+   "leave": "Sair do concurso",
+   "exit": "Sair do estúdio (fechar o jogo)"
+  }
+ },
+ "hash": "f3d93078182cd075b790315a7bb3903f98b38d8e53cee0f55fffa7cdc3b229b6"
+}

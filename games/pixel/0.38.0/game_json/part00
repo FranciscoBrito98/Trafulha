@@ -1,0 +1,42 @@
+{
+ "id": "pixel",
+ "version": "0.38.0",
+ "name": "Os Desenrascados",
+ "sub": "Plataformas contra o Dr. Pastel",
+ "tag": "Cinco níveis, cinco bosses, muitos pastéis.",
+ "accent": "#ffd040",
+ "accent2": "#5a3d10",
+ "bg": "#1d3550",
+ "solo": [
+  "Missão a solo",
+  "Salvar a cidade sozinho"
+ ],
+ "host": [
+  "Juntar a equipa",
+  "Até 4 desenrascados"
+ ],
+ "loading": "A aquecer os pastéis…",
+ "menu": {
+  "solo": [
+   "Missão a solo",
+   "Salvar a cidade sozinho"
+  ],
+  "host": [
+   "Juntar a equipa",
+   "Até 4 desenrascados"
+  ],
+  "join": "Entrar na equipa de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Desistir da cidade (sair)",
+  "nameLabel": "Herói:",
+  "pause": {
+   "title": "Pausa nos pastéis",
+   "resume": "Voltar à ação",
+   "invite": "Chamar a equipa (Shift+Tab)",
+   "leave": "Voltar à base (menu)",
+   "exit": "Desistir da cidade (sair)"
+  }
+ },
+ "hash": "269ec7767f26c6ec399ee4044c4d4100033d0d882ad1f7e9422b9ff3c535ed21"
+}

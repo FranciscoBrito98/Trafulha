@@ -1,0 +1,43 @@
+{
+ "id": "bilhar",
+ "version": "0.38.2",
+ "name": "Bilhar",
+ "sub": "Bola 8, Bola 9 e Snooker",
+ "tag": "Física a sério, efeitos na bola e apostas.",
+ "accent": "#c8a04a",
+ "accent2": "#0a2a1a",
+ "bg": "#0c1a14",
+ "solo": [
+  "Jogar contra o computador",
+  "Bola 8, Bola 9 ou Snooker"
+ ],
+ "host": [
+  "Reservar uma mesa",
+  "Até 4 jogadores, em equipas"
+ ],
+ "loading": "A pôr giz nos tacos…",
+ "menu": {
+  "solo": [
+   "Jogar contra o computador",
+   "Bola 8, Bola 9 ou Snooker"
+  ],
+  "host": [
+   "Reservar uma mesa",
+   "Até 4 jogadores, em equipas"
+  ],
+  "join": "Entrar na mesa de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Pendurar o taco",
+  "nameLabel": "Jogador:",
+  "pause": {
+   "title": "Pausa",
+   "resume": "Voltar à mesa",
+   "invite": "Convidar amigos (Shift+Tab)",
+   "opts": "Opções de som, rato e gráficos",
+   "leave": "Sair da sala de bilhar",
+   "exit": "Pendurar o taco (fechar o jogo)"
+  }
+ },
+ "hash": "836bef2536f226b2daa0a6b393aa6451cf694213f680a7e4d6d237c6f2fe42f5"
+}

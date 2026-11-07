@@ -1,0 +1,43 @@
+{
+ "id": "burla",
+ "version": "0.38.1",
+ "name": "Burla com Amigos",
+ "sub": "Call center com clientes com voz e IA",
+ "tag": "Vendam disparates e cumpram a quota.",
+ "accent": "#8ae08a",
+ "accent2": "#0a3a1a",
+ "bg": "#0e1f17",
+ "solo": [
+  "Turno a solo",
+  "Um dia de trabalho no call center"
+ ],
+ "host": [
+  "Abrir o call center",
+  "Uma equipa de vendedores trapalhões"
+ ],
+ "loading": "A ligar os auscultadores…",
+ "menu": {
+  "solo": [
+   "Turno a solo",
+   "Um dia de trabalho no call center"
+  ],
+  "host": [
+   "Abrir o call center",
+   "Uma equipa de vendedores trapalhões"
+  ],
+  "join": "Entrar no turno de um colega",
+  "joinShort": "Código:",
+  "opts": "Definições",
+  "exit": "Picar o ponto e sair",
+  "nameLabel": "Vendedor:",
+  "pause": {
+   "title": "Pausa para o café",
+   "resume": "Voltar ao telefone",
+   "invite": "Chamar colegas (Shift+Tab)",
+   "opts": "Definições de som, rato e gráficos",
+   "leave": "Sair do turno",
+   "exit": "Picar o ponto (fechar o jogo)"
+  }
+ },
+ "hash": "922a86113ac30afd0f1f79f8283a123eba88bad45c9a1f121afe1a9c95f32bcc"
+}

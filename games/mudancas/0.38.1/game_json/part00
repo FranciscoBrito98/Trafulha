@@ -1,0 +1,42 @@
+{
+ "id": "mudancas",
+ "version": "0.38.1",
+ "name": "Mudanças Lda.",
+ "sub": "Tudo parte. O patrão desconta.",
+ "tag": "Sofás, frigoríficos e pianos, a carregar a dois.",
+ "accent": "#8ac8ff",
+ "accent2": "#1a2a5a",
+ "bg": "#1a2638",
+ "solo": [
+  "Turno com o Tó",
+  "O estagiário ajuda (mais ou menos)"
+ ],
+ "host": [
+  "Abrir a empresa",
+  "Até 4 carregadores"
+ ],
+ "loading": "A encher o camião…",
+ "menu": {
+  "solo": [
+   "Turno com o Tó",
+   "O estagiário ajuda (mais ou menos)"
+  ],
+  "host": [
+   "Abrir a empresa",
+   "Até 4 carregadores"
+  ],
+  "join": "Entrar na equipa de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Arrumar a carrinha (sair)",
+  "nameLabel": "Carregador:",
+  "pause": {
+   "title": "Pausa para a bifana",
+   "resume": "Voltar ao trabalho",
+   "invite": "Chamar reforços (Shift+Tab)",
+   "leave": "Voltar à sede (menu)",
+   "exit": "Arrumar a carrinha (sair)"
+  }
+ },
+ "hash": "36f896ab489fe079f2cda2d4cfab8d80daf4d5e9baed94a6367682dcb8170507"
+}

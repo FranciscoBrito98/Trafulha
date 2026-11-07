@@ -1,0 +1,42 @@
+{
+ "id": "samurai",
+ "version": "0.38.0",
+ "name": "Os Samurais da Ribeira",
+ "sub": "Um golpe mata. Porto, à noite.",
+ "tag": "Recuperem a Receita Sagrada do Molho da Francesinha.",
+ "accent": "#ff6a5a",
+ "accent2": "#3a0a0a",
+ "bg": "#141a3a",
+ "solo": [
+  "O caminho do samurai",
+  "A história completa, sozinho"
+ ],
+ "host": [
+  "Reunir o dojo",
+  "Até 4 samurais"
+ ],
+ "loading": "A afiar as katanas…",
+ "menu": {
+  "solo": [
+   "O caminho do samurai",
+   "A história completa, sozinho"
+  ],
+  "host": [
+   "Reunir o dojo",
+   "Até 4 samurais"
+  ],
+  "join": "Entrar no dojo de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Guardar a katana (sair)",
+  "nameLabel": "Samurai:",
+  "pause": {
+   "title": "Meditação",
+   "resume": "Voltar ao combate",
+   "invite": "Chamar samurais (Shift+Tab)",
+   "leave": "Voltar ao dojo (menu)",
+   "exit": "Guardar a katana (sair)"
+  }
+ },
+ "hash": "17f2106bc33d2ba103023b07bf85938be653ba3a26885118bf142b376bab9f29"
+}

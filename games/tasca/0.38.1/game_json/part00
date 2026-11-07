@@ -1,0 +1,42 @@
+{
+ "id": "tasca",
+ "version": "0.38.1",
+ "name": "Tasca em Apuros",
+ "sub": "Cozinha em equipa",
+ "tag": "Cozinhem juntos, sirvam depressa e não deixem nada pegar fogo!",
+ "accent": "#ffd040",
+ "accent2": "#5a3d10",
+ "bg": "#2a1c16",
+ "solo": [
+  "Cozinhar sozinho",
+  "O Zé ensina tudo no treino"
+ ],
+ "host": [
+  "Abrir a tasca",
+  "Até 4 cozinheiros"
+ ],
+ "loading": "A acender a chapa…",
+ "menu": {
+  "solo": [
+   "Cozinhar sozinho",
+   "O Zé ensina tudo no treino"
+  ],
+  "host": [
+   "Abrir a tasca",
+   "Até 4 cozinheiros"
+  ],
+  "join": "Entrar na tasca de um amigo",
+  "joinShort": "Código:",
+  "opts": "Opções",
+  "exit": "Fechar a tasca (sair)",
+  "nameLabel": "Cozinheiro:",
+  "pause": {
+   "title": "Pausa para o café",
+   "resume": "Voltar ao fogão",
+   "invite": "Chamar ajudantes (Shift+Tab)",
+   "leave": "Tirar o avental (menu)",
+   "exit": "Fechar a tasca (sair)"
+  }
+ },
+ "hash": "cc43c3095c78a0009019ef7d037fad7071bf25b5e6e8e24b4a6406c4c6b72b2c"
+}
