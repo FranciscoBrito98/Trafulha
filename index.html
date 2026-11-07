@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MALTA · jogos para jogar com a malta</title>
+<meta name="description" content="O MALTA é um programa grátis para Windows com jogos para jogar com os amigos: assaltos, concursos, cozinha, bilhar, mundos de blocos e muito mais. Sem contas, sem anúncios.">
+<meta property="og:title" content="MALTA · jogos para jogar com a malta">
+<meta property="og:description" content="Jogos grátis para jogar com os amigos, num só programa. Descarrega para Windows.">
+<meta property="og:image" content="media/malta/loja.jpg">
+<meta name="theme-color" content="#120c1d">
+<link rel="icon" href="media/malta/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noite: #120c1d; --tinta: #1c1430; --painel: #251a3d; --linha: #34284f;
+    --ouro: #ffd040; --ouro2: #e8a01c; --azulejo: #2456c7; --azul: #8fb2ff; --cal: #f6efe0; --telha: #e2643a; --verde: #5fd08a; --cinza: #b5adc9;
+    --disp: 'Bricolage Grotesque', 'Segoe UI', sans-serif; --txt: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif; --px: 'Silkscreen', monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--noite); color: var(--cal); font: 400 18px/1.55 var(--txt); overflow-x: hidden; }
+  img, video { display: block; max-width: 100%; }
+  a { color: var(--ouro); }
+  :focus-visible { outline: 3px solid var(--ouro); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: min(1220px, 100% - 40px); margin: 0 auto; }
+  .px { font-family: var(--px); font-weight: 400; letter-spacing: .02em; }
+
+  /* ---------- barra ---------- */
+  .top { position: fixed; inset: 0 0 auto; z-index: 30; transition: background .3s, box-shadow .3s; }
+  .top.cheia { background: rgba(18, 12, 29, .82); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--linha); }
+  .top .wrap { display: flex; align-items: center; gap: 28px; height: 72px; }
+  .top .logo { height: 32px; image-rendering: pixelated; }
+  .top nav { margin-left: auto; display: flex; gap: 26px; }
+  .top nav a { color: var(--cal); text-decoration: none; font-weight: 700; font-size: 16px; opacity: .85; }
+  .top nav a:hover { opacity: 1; color: var(--ouro); }
+  .top .mini { padding: 10px 18px; font-size: 16px; border-radius: 10px; box-shadow: 0 3px 0 #7a4a10; }
+
+  /* ---------- botão de descarregar ---------- */
+  .btn { position: relative; display: inline-flex; align-items: center; gap: 14px; padding: 20px 34px; border-radius: 16px; border: 0; cursor: pointer; font: 800 23px/1 var(--disp); text-decoration: none; color: #1f1405; background: linear-gradient(180deg, #ffe58a, var(--ouro) 45%, var(--ouro2)); box-shadow: 0 7px 0 #8a5410, 0 20px 50px rgba(255, 196, 40, .28); transition: transform .08s, box-shadow .08s, filter .2s; isolation: isolate; }
+  .btn::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); background-size: 250% 100%; animation: brilho 4.5s ease-in-out infinite; z-index: -1; mix-blend-mode: overlay; }
+  @keyframes brilho { 0%, 70% { background-position: 150% 0; } 100% { background-position: -50% 0; } }
+  .btn:hover { filter: brightness(1.05); } .btn:active { transform: translateY(5px); box-shadow: 0 2px 0 #8a5410, 0 10px 30px rgba(255, 196, 40, .2); }
+  .btn svg { width: 26px; height: 26px; flex: none; }
+  .btn .win { display: block; font: 700 13px var(--txt); opacity: .7; margin-top: 4px; }
+
+  /* ---------- entrada: o ecrã da malta ---------- */
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; overflow: hidden; isolation: isolate; padding: 110px 0 70px; }
+  .parede { position: absolute; inset: -20% -10% -20% 34%; z-index: -2; transform: perspective(1400px) rotateX(16deg) rotateY(-14deg) rotateZ(6deg); display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .coluna { display: flex; flex-direction: column; gap: 18px; animation: sobe 60s linear infinite; }
+  .coluna:nth-child(2) { animation-duration: 75s; animation-direction: reverse; margin-top: -40%; }
+  .coluna:nth-child(3) { animation-duration: 66s; margin-top: -15%; }
+  @keyframes sobe { to { transform: translateY(-50%); } }
+  .ecra { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 30px 60px rgba(0,0,0,.55); }
+  .ecra img, .ecra video { width: 100%; height: 100%; object-fit: cover; }
+  .ecra .nome { position: absolute; left: 12px; bottom: 10px; font: 800 15px var(--disp); text-shadow: 0 2px 8px #000; }
+  .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 70% 90% at 15% 50%, var(--noite) 35%, rgba(18,12,29,.85) 55%, rgba(18,12,29,.2) 80%), linear-gradient(0deg, var(--noite), transparent 30%), linear-gradient(180deg, var(--noite), transparent 18%); }
+  .hero h1 { margin: 0; font: 800 clamp(54px, 8.6vw, 128px)/.88 var(--disp); letter-spacing: -.035em; max-width: 8.6ch; }
+  .hero h1 .linha { display: block; }
+  .hero h1 .malta { color: var(--ouro); text-shadow: 0 0 60px rgba(255, 208, 64, .35); }
+  .hero .lead { max-width: 33ch; font-size: clamp(19px, 1.8vw, 23px); color: #e6def3; margin: 28px 0 36px; }
+  .acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+  .acoes .info { color: var(--cinza); font-size: 15px; line-height: 1.45; }
+  .acoes .info b { color: var(--cal); }
+  .entrada > * { animation: entra .9s cubic-bezier(.2, .8, .2, 1) both; }
+  .entrada > :nth-child(2) { animation-delay: .12s; } .entrada > :nth-child(3) { animation-delay: .24s; }
+  @keyframes entra { from { opacity: 0; transform: translateY(26px); } }
+
+  /* avisos como os do MALTA, a aparecer no canto */
+  .avisos { position: absolute; right: max(20px, calc((100% - 1220px) / 2)); bottom: 44px; width: 340px; display: flex; flex-direction: column-reverse; gap: 10px; z-index: 2; }
+  .aviso { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgba(37, 26, 61, .92); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--linha), 0 18px 40px rgba(0,0,0,.5); animation: aviso .5s cubic-bezier(.2, .9, .3, 1.2) both; }
+  .aviso.sai { animation: avisoSai .4s ease-in forwards; }
+  @keyframes aviso { from { opacity: 0; transform: translateX(40px) scale(.96); } }
+  @keyframes avisoSai { to { opacity: 0; transform: translateY(10px) scale(.96); } }
+  .aviso img { width: 42px; height: 42px; border-radius: 10px; image-rendering: pixelated; background: #3a2c64; flex: none; }
+  .aviso b { display: block; font-size: 15px; } .aviso span { font-size: 14px; color: var(--cinza); }
+  .aviso .ok { margin-left: auto; font: 700 13px var(--txt); background: var(--ouro); color: #1f1405; border-radius: 8px; padding: 6px 10px; flex: none; }
+  .aviso.conq { box-shadow: 0 0 0 1px #8a6a20, 0 18px 40px rgba(0,0,0,.5); }
+
+  /* ---------- secções ---------- */
+  section { padding: 110px 0; position: relative; }
+  h2 { font: 800 clamp(38px, 5.6vw, 72px)/.95 var(--disp); margin: 0 0 18px; letter-spacing: -.03em; }
+  .intro { color: var(--cinza); max-width: 54ch; margin: 0 0 48px; font-size: 19px; }
+
+  /* ---------- montra dos jogos (como numa consola) ---------- */
+  .montra { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 22px; }
+  .palco { position: relative; border-radius: 22px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; box-shadow: 0 0 0 1px var(--linha), 0 40px 100px rgba(0,0,0,.6); }
+  .palco video, .palco img.fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .6s; }
+  .palco::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,6,18,.95) 4%, rgba(10,6,18,.4) 38%, transparent 60%); pointer-events: none; }
+  .palco .texto { position: absolute; left: 34px; right: 34px; bottom: 30px; z-index: 2; display: grid; grid-template-columns: auto 1fr; gap: 0 22px; align-items: end; }
+  .palco .capa { width: 92px; border-radius: 6px; image-rendering: pixelated; box-shadow: 0 0 0 3px rgba(255,255,255,.12), 0 14px 30px rgba(0,0,0,.6); grid-row: span 2; }
+  .palco h3 { margin: 0; font: 800 clamp(30px, 3.6vw, 50px)/1 var(--disp); letter-spacing: -.02em; }
+  .palco .frase { color: #e6def3; font-size: 18px; margin: 8px 0 0; max-width: 60ch; }
+  .palco .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; grid-column: 2; }
+  .chip { font-size: 13.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.1); backdrop-filter: blur(6px); }
+  .chip.novo { background: var(--telha); color: #fff; }
+  .palco .ver { position: absolute; top: 22px; right: 22px; z-index: 2; border: 0; cursor: pointer; font: 700 15px var(--txt); color: var(--cal); background: rgba(18,12,29,.65); backdrop-filter: blur(8px); padding: 10px 16px; border-radius: 12px; box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
+  .palco .ver:hover { background: rgba(18,12,29,.9); }
+  .lista-caixa { position: relative; }
+  .lista { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 2px; overflow: auto; padding-right: 4px; }
+  .lista::-webkit-scrollbar { width: 6px; } .lista::-webkit-scrollbar-thumb { background: var(--linha); border-radius: 3px; }
+  .item { position: relative; display: flex; align-items: center; gap: 14px; padding: 5px 12px 8px; border-radius: 14px; border: 0; background: transparent; color: var(--cal); text-align: left; cursor: pointer; font: inherit; overflow: hidden; }
+  .item:hover { background: rgba(255,255,255,.05); }
+  .item[aria-selected="true"] { background: var(--painel); box-shadow: inset 0 0 0 1px var(--linha); }
+  .item img { width: 30px; height: 45px; border-radius: 4px; image-rendering: pixelated; flex: none; }
+  .item b { display: block; font: 700 17px/1.15 var(--disp); }
+  .item small { display: block; color: var(--cinza); font-size: 13.5px; line-height: 1.25; margin-top: 2px; }
+  .item > span:not(.barra) { line-height: 1; }
+  .item .barra { position: absolute; left: 12px; right: 12px; bottom: 2px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.08); overflow: hidden; opacity: 0; }
+  .item[aria-selected="true"] .barra { opacity: 1; }
+  .item .barra i { display: block; height: 100%; width: 0; background: var(--ouro); }
+  .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 22px; }
+  .filtros button { font: 700 15px var(--txt); color: var(--cal); background: transparent; border: 1.5px solid var(--linha); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+  .filtros button:hover { border-color: #5a4a80; }
+  .filtros button[aria-pressed="true"] { background: var(--cal); color: var(--noite); border-color: var(--cal); }
+
+  /* ---------- tudo grátis: faixa com azulejos ---------- */
+  .faixa { padding: 0; }
+  .faixa .wrap { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 1px var(--linha); }
+  .faixa .c { padding: 30px 26px; background: var(--tinta); border-right: 1px solid var(--linha); }
+  .faixa .c:last-child { border-right: 0; }
+  .faixa .n { font: 400 34px/1 var(--px); color: var(--ouro); }
+  .faixa .t { margin-top: 10px; color: #ddd5ec; font-size: 16px; }
+  .faixa .azul { background: var(--azulejo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4 36 20 20 36 4 20Z' fill='none' stroke='%23ffffff' stroke-opacity='.18' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%23ffffff' fill-opacity='.18'/%3E%3C/svg%3E") 0 0/44px; }
+  .faixa .azul .n { color: #fff; } .faixa .azul .t { color: #e4ebff; }
+
+  /* ---------- o programa ---------- */
+  .prog { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .tabs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .tab { border: 0; text-align: left; background: transparent; color: var(--cal); font: inherit; cursor: pointer; padding: 18px 22px; border-radius: 16px; position: relative; }
+  .tab b { display: block; font: 800 24px var(--disp); letter-spacing: -.01em; }
+  .tab span { display: block; color: var(--cinza); font-size: 16.5px; max-height: 0; overflow: hidden; transition: max-height .4s, margin .3s; }
+  .tab[aria-selected="true"] { background: var(--tinta); box-shadow: inset 0 0 0 1px var(--linha); }
+  .tab[aria-selected="true"] b { color: var(--ouro); }
+  .tab[aria-selected="true"] span { max-height: 120px; margin-top: 6px; }
+  .janela { position: relative; border-radius: 16px; overflow: hidden; background: #0c0815; box-shadow: 0 0 0 1px var(--linha), 0 50px 120px rgba(0,0,0,.65), 0 0 120px rgba(36, 86, 199, .25); transform: perspective(1600px) rotateY(-7deg) rotateX(3deg); transition: transform .6s; }
+  .janela:hover { transform: perspective(1600px) rotateY(-3deg) rotateX(1deg); }
+  .janela img { width: 100%; transition: opacity .35s; }
+
+  /* ---------- instalar ---------- */
+  .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: p; position: relative; }
+  .passos::before { content: ''; position: absolute; left: 6%; right: 6%; top: 34px; border-top: 2px dashed var(--linha); }
+  .passos li { counter-increment: p; padding: 0 26px; text-align: center; position: relative; }
+  .passos li::before { content: counter(p); display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto 22px; font: 400 28px var(--px); color: var(--noite); background: var(--ouro); border-radius: 18px; box-shadow: 0 6px 0 #8a5410, 0 0 0 8px var(--noite); transform: rotate(-4deg); }
+  .passos li:nth-child(2)::before { background: var(--azul); box-shadow: 0 6px 0 #3a5aa0, 0 0 0 8px var(--noite); transform: rotate(3deg); }
+  .passos li:nth-child(3)::before { background: var(--verde); box-shadow: 0 6px 0 #2a7a4a, 0 0 0 8px var(--noite); transform: rotate(-2deg); }
+  .passos h3 { margin: 0 0 8px; font: 800 24px var(--disp); }
+  .passos p { margin: 0 auto; color: #d4cde2; font-size: 16.5px; max-width: 32ch; }
+  .passos code { background: var(--tinta); padding: 2px 7px; border-radius: 6px; font-size: 15px; color: var(--ouro); }
+
+  /* ---------- perguntas ---------- */
+  .faq-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; }
+  .faq details { border-bottom: 1px solid var(--linha); padding: 20px 0; }
+  .faq summary { cursor: pointer; font: 700 21px var(--disp); list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; color: var(--ouro); font: 400 22px var(--px); transition: transform .25s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq p { color: #d4cde2; margin: 12px 0 0; max-width: 62ch; }
+
+  /* ---------- final ---------- */
+  .fim { padding: 140px 0; text-align: center; overflow: hidden; }
+  .fim::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 60%, rgba(255, 208, 64, .16), transparent 70%); pointer-events: none; }
+  .fim h2 { font-size: clamp(46px, 7.4vw, 104px); max-width: 12ch; margin: 0 auto 36px; }
+  .capas { display: flex; justify-content: center; gap: 14px; margin: 0 auto 50px; flex-wrap: wrap; }
+  .capas img { width: 72px; border-radius: 6px; image-rendering: pixelated; box-shadow: 0 16px 30px rgba(0,0,0,.5); transition: transform .3s; }
+  .capas img:nth-child(odd) { transform: rotate(-5deg) translateY(6px); } .capas img:nth-child(even) { transform: rotate(4deg); }
+  .capas img:hover { transform: translateY(-10px) rotate(0) scale(1.08); }
+  footer { border-top: 1px solid var(--linha); color: var(--cinza); font-size: 14px; padding: 28px 0 44px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer a { color: var(--cinza); }
+
+  /* ---------- janela de um jogo ---------- */
+  dialog { width: min(1060px, 100% - 24px); max-height: 92vh; padding: 0; border: 0; border-radius: 20px; background: var(--tinta); color: var(--cal); box-shadow: 0 0 0 1px var(--linha), 0 40px 120px rgba(0,0,0,.8); overflow: auto; }
+  dialog[open] { animation: abre .35s cubic-bezier(.2, .9, .3, 1.1); }
+  @keyframes abre { from { opacity: 0; transform: translateY(20px) scale(.97); } }
+  dialog::backdrop { background: rgba(8, 5, 14, .8); backdrop-filter: blur(6px); }
+  .dlg-media { aspect-ratio: 16 / 9; background: #000; }
+  .dlg-media video, .dlg-media img { width: 100%; height: 100%; object-fit: cover; }
+  .dlg-corpo { padding: 26px 30px 30px; display: grid; grid-template-columns: 1fr 260px; gap: 34px; }
+  .dlg-corpo h3 { margin: 0 0 4px; font: 800 38px/1.05 var(--disp); letter-spacing: -.02em; }
+  .dlg-corpo .tipo { color: var(--azul); font-weight: 700; }
+  .dlg-corpo p { color: #e0d9ec; }
+  .factos { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 9px 14px; font-size: 16px; align-content: start; background: var(--painel); padding: 18px 20px; border-radius: 14px; }
+  .factos dt { color: var(--cinza); } .factos dd { margin: 0; font-weight: 700; }
+  .fotos { display: flex; gap: 10px; overflow-x: auto; padding: 0 30px 26px; }
+  .fotos button { flex: none; width: 200px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; border: 2px solid transparent; padding: 0; cursor: pointer; background: #000; }
+  .fotos button[aria-current="true"] { border-color: var(--ouro); }
+  .fotos img { width: 100%; height: 100%; object-fit: cover; }
+  .fechar { position: sticky; float: right; top: 12px; margin: 12px 12px -54px 0; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(18, 12, 29, .82); color: var(--cal); font-size: 20px; cursor: pointer; z-index: 3; }
+
+  /* confettis de pixel ao descarregar */
+  #festa { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+
+  @media (max-width: 1020px) {
+    .montra { grid-template-columns: 1fr; } .lista { position: static; flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+    .item { flex-direction: column; min-width: 120px; text-align: center; } .item small { display: none; }
+    .prog, .faq-grid { grid-template-columns: 1fr; gap: 40px; } .faixa .wrap { grid-template-columns: repeat(2, 1fr); } .faixa .c:nth-child(2) { border-right: 0; }
+    .avisos { display: none; } .parede { inset: -10% -40% 30% 10%; opacity: .5; } .dlg-corpo { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 17px; } .top nav { display: none; } .top .mini { margin-left: auto; } section { padding: 76px 0; }
+    .passos { grid-template-columns: 1fr; gap: 44px; } .passos::before { display: none; }
+    .palco { aspect-ratio: 4 / 5; } .palco .texto { left: 20px; right: 20px; bottom: 20px; grid-template-columns: 1fr; } .palco .capa { display: none; } .palco .chips { grid-column: 1; }
+    .btn { font-size: 20px; padding: 17px 24px; } .faixa .c { padding: 22px 18px; } .faixa .n { font-size: 26px; } .faixa .t { font-size: 14.5px; }
+    .hero { min-height: auto; padding-top: 120px; } .parede { inset: 40% -60% -30% -10%; opacity: .45; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="top" id="top"><div class="wrap"><img class="logo" src="media/malta/logo.png" alt="MALTA" width="100" height="32"><nav aria-label="Secções"><a href="#jogos">Jogos</a><a href="#programa">O programa</a><a href="#instalar">Instalar</a><a href="#perguntas">Perguntas</a></nav><a class="btn mini dlbtn" href="#" download>Descarregar</a></div></header>
+
+<main>
+  <section class="hero" aria-labelledby="titulo">
+    <div class="parede" id="parede" aria-hidden="true"></div>
+    <div class="wrap entrada">
+      <h1 id="titulo"><span class="linha">Jogos para</span><span class="linha">jogar com</span><span class="linha malta">a malta.</span></h1>
+      <p class="lead">Um só programa, grátis, cheio de jogos feitos para jogar com os amigos. Abres uma sala, a malta entra, e pronto.</p>
+      <div class="acoes">
+        <a class="btn dlbtn" href="#" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 10l6 6 6-6M4 20h16"/></svg><span>Descarregar para Windows</span></a>
+        <div class="info" id="dlinfo"><b>Grátis</b>, sem contas e sem anúncios.<br>Para Windows 10 e 11.</div>
+      </div>
+    </div>
+    <div class="avisos" id="avisos" aria-hidden="true"></div>
+  </section>
+
+  <section class="faixa" aria-label="Em números">
+    <div class="wrap">
+      <div class="c"><div class="n" id="n-jogos">10</div><div class="t">jogos, e cada um instala-se à parte</div></div>
+      <div class="c"><div class="n">1-4</div><div class="t">jogadores em todos, com o código da sala</div></div>
+      <div class="c"><div class="n" id="n-conq">80+</div><div class="t">conquistas para desbloquear</div></div>
+      <div class="c azul"><div class="n">0 €</div><div class="t">tudo grátis, para sempre</div></div>
+    </div>
+  </section>
+
+  <section id="jogos" aria-labelledby="jogos-t">
+    <div class="wrap">
+      <h2 id="jogos-t">Escolhe o jogo.</h2>
+      <p class="intro">Assaltos, concursos, cozinha, bilhar, mundos de blocos. Escolhe um para ver como é.</p>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por género"></div>
+      <div class="montra">
+        <div class="palco" id="palco" aria-live="polite">
+          <video id="v1" muted loop playsinline></video><video id="v2" muted loop playsinline style="opacity:0"></video>
+          <button class="ver" id="ver">Ver imagens e detalhes</button>
+          <div class="texto"><img class="capa" id="p-capa" alt=""><h3 id="p-nome"></h3><p class="frase" id="p-frase"></p><div class="chips" id="p-chips"></div></div>
+        </div>
+        <div class="lista-caixa"><div class="lista" id="lista" role="tablist" aria-label="Jogos"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programa" aria-labelledby="prog-t">
+    <div class="wrap prog">
+      <div>
+        <h2 id="prog-t">Os jogos, os amigos e tudo o resto. No mesmo sítio.</h2>
+        <div class="tabs" role="tablist" aria-label="Partes do MALTA" id="tabs">
+          <button class="tab" role="tab" aria-selected="true" data-img="media/malta/loja.jpg"><b>Loja</b><span>Tudo grátis. Destaques da semana, recomendações pelos amigos e um carrinho para instalar vários jogos de uma vez.</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-img="media/malta/perfil.jpg"><b>Perfil</b><span>Avatar em pixel art, fundo, nível e experiência, horas de jogo e as conquistas de todos os jogos.</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-img="media/malta/jogos.jpg"><b>Biblioteca e amigos</b><span>Instala só o que queres. Vê quem está a jogar o quê e entra na sala dele com um clique.</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-img="media/malta/comunidade.jpg"><b>Comunidade</b><span>Grupos com conversa, a atividade dos amigos e procurar jogadores pelo código de amigo.</span></button>
+        </div>
+      </div>
+      <div class="janela"><img id="janela" src="media/malta/loja.jpg" alt="O MALTA aberto na Loja" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section id="instalar" aria-labelledby="inst-t">
+    <div class="wrap">
+      <h2 id="inst-t" style="text-align:center">Pronto num minuto.</h2>
+      <p class="intro" style="text-align:center;margin-left:auto;margin-right:auto">Depois escolhes os jogos lá dentro. Atualizam-se sozinhos.</p>
+      <ol class="passos">
+        <li><h3>Descarrega</h3><p>Carrega em "Descarregar para Windows" e abre o <code>MALTA-Setup.exe</code>.</p></li>
+        <li><h3>Confirma no Windows</h3><p>Se aparecer um aviso, carrega em "Mais informações" e depois em "Executar mesmo assim".</p></li>
+        <li><h3>Chama a malta</h3><p>Escreve o teu nome, copia o teu código de amigo e envia-o aos amigos.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="perguntas" aria-labelledby="faq-t">
+    <div class="wrap faq-grid">
+      <h2 id="faq-t">Perguntas que a malta faz.</h2>
+      <div>
+        <details><summary>É mesmo grátis?</summary><p>Sim. O programa e todos os jogos são grátis, sem anúncios e sem compras lá dentro.</p></details>
+        <details><summary>Preciso de criar conta?</summary><p>Não. Cada pessoa tem um código de amigo de 8 letras. As conversas e os convites vão diretamente entre os computadores dos amigos.</p></details>
+        <details><summary>Quantos podem jogar ao mesmo tempo?</summary><p>De 1 a 4 em todos os jogos. Quem abre a sala recebe um código de 4 letras; os amigos entram com esse código ou pelo convite.</p></details>
+        <details><summary>Funciona em Mac ou Linux?</summary><p>Por agora só em Windows 10 e 11.</p></details>
+        <details><summary>O Windows diz que o programa não é reconhecido. É seguro?</summary><p>O aviso aparece porque o instalador ainda não tem uma assinatura digital paga. Carrega em "Mais informações" e em "Executar mesmo assim".</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="fim" aria-labelledby="fim-t">
+    <div class="wrap">
+      <div class="capas" id="capas" aria-hidden="true"></div>
+      <h2 id="fim-t">A malta já está à tua espera.</h2>
+      <a class="btn dlbtn" href="#" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 10l6 6 6-6M4 20h16"/></svg>Descarregar para Windows</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>MALTA<span id="ver-l"></span>. Jogos, arte e música originais, feitos em Portugal.</span><a href="https://github.com/FranciscoBrito98/Malta">Código no GitHub</a></div></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <button class="fechar" id="fechar" aria-label="Fechar">✕</button>
+  <div class="dlg-media" id="dlg-media"></div>
+  <div class="dlg-corpo"><div><h3 id="dlg-t"></h3><div class="tipo" id="dlg-tipo"></div><p id="dlg-desc"></p><a class="btn dlbtn" href="#" download style="font-size:18px;padding:15px 24px">Descarregar o MALTA</a></div><dl class="factos" id="dlg-factos"></dl></div>
+  <div class="fotos" id="dlg-fotos"></div>
+</dialog>
+<canvas id="festa" aria-hidden="true"></canvas>
+
+<script>
+const REPO = 'FranciscoBrito98/Malta';
+const DL = `https://github.com/${REPO}/raw/builds/download/MALTA-Setup.exe`;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const mb = n => Math.round(n / 1048576) + ' MB';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+for (const a of document.querySelectorAll('.dlbtn')) { a.href = DL; a.addEventListener('click', e => festa(e)); }
+addEventListener('scroll', () => $('top').classList.toggle('cheia', scrollY > 30), { passive: true });
+
+// confettis de pixel quando se carrega em descarregar
+function festa(e) {
+  if (reduce) return;
+  const cv = $('festa'), g = cv.getContext('2d'); cv.width = innerWidth; cv.height = innerHeight;
+  const cores = ['#ffd040', '#2456c7', '#e2643a', '#5fd08a', '#f6efe0', '#8fb2ff'], P = [];
+  for (let i = 0; i < 120; i++) { const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 9; P.push({ x: e.clientX, y: e.clientY, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 6, s: 4 + Math.floor(Math.random() * 3) * 2, c: cores[i % cores.length], r: 1 }); }
+  let t = 0; (function loop() { g.clearRect(0, 0, cv.width, cv.height); t++; for (const p of P) { p.vy += .35; p.vx *= .985; p.x += p.vx; p.y += p.vy; g.globalAlpha = Math.max(0, 1 - t / 90); g.fillStyle = p.c; g.fillRect(Math.round(p.x), Math.round(p.y), p.s, p.s); } if (t < 90) requestAnimationFrame(loop); else g.clearRect(0, 0, cv.width, cv.height); })();
+}
+
+// separadores do programa
+for (const b of $('tabs').children) b.onclick = () => { for (const x of $('tabs').children) x.setAttribute('aria-selected', x === b); const img = $('janela'); img.style.opacity = 0; setTimeout(() => { img.src = b.dataset.img; img.alt = 'O MALTA: ' + b.querySelector('b').textContent; img.style.opacity = 1; }, 180); };
+
+(async () => {
+  const games = await fetch('games.json').then(r => r.json());
+  let vj = null; try { vj = await fetch(`https://raw.githubusercontent.com/${REPO}/main/versions.json`, { cache: 'no-store' }).then(r => r.json()); } catch { /* sem rede: mostra todos */ }
+  const list = vj?.games ? games.filter(g => vj.games[g.id]) : games;
+  const byNew = [...list].sort((a, b) => (b.added || '').localeCompare(a.added || ''));
+  const newest = byNew[0]?.id;
+  if (vj?.launcher) { $('dlinfo').innerHTML = `<b>Grátis</b>, sem contas e sem anúncios.<br>Versão ${esc(vj.launcher.version)}, ${mb(vj.launcher.size)}, para Windows 10 e 11.`; $('ver-l').textContent = ' ' + vj.launcher.version; }
+  $('n-jogos').textContent = list.length; $('n-conq').textContent = list.reduce((a, g) => a + (g.ach || 0), 0);
+
+  // parede de ecrãs da entrada: três colunas a deslizar, com os jogos mais recentes à frente
+  const ecra = (g, vid) => `<div class="ecra">${vid && !reduce ? `<video src="${g.media.video}" poster="${g.media.poster}" muted loop playsinline autoplay preload="metadata"></video>` : `<img src="${g.media.poster || g.media.art}" alt="" loading="lazy">`}<span class="nome">${esc(g.name)}</span></div>`;
+  const cols = [[], [], []]; byNew.forEach((g, i) => cols[i % 3].push(g));
+  $('parede').innerHTML = cols.map((c, k) => { const items = [...c, ...c, ...c].slice(0, Math.max(6, c.length * 2)); const half = items.map((g, i) => ecra(g, i < 2 && k !== 1)).join(''); return `<div class="coluna">${half}${half}</div>`; }).join('');
+
+  // avisos no canto, como os do MALTA
+  const nomes = ['Rui', 'Ana', 'Zé', 'Marta', 'Tó', 'Inês'], avs = ['ninja', 'galinha', 'samurai', 'peixeira', 'robo', 'gato'];
+  const msgs = list.flatMap((g, i) => [
+    { t: `${nomes[i % 6]} convidou-te!`, s: `${g.name} · sala ${'QXRTKMPB'.slice(i % 5, i % 5 + 4)}`, a: avs[i % 6], ok: 'Entrar' },
+    { t: `${nomes[(i + 2) % 6]} está a jogar`, s: g.name, a: avs[(i + 3) % 6] },
+  ]).sort(() => Math.random() - .5);
+  let mi = 0;
+  const mostraAviso = () => {
+    const box = $('avisos'); if (!box || getComputedStyle(box).display === 'none') return;
+    const m = msgs[mi++ % msgs.length], el = document.createElement('div'); el.className = 'aviso';
+    el.innerHTML = `<img src="media/malta/av/${m.a}.png" alt=""><div><b>${esc(m.t)}</b><span>${esc(m.s)}</span></div>${m.ok ? `<span class="ok">${m.ok}</span>` : ''}`;
+    box.prepend(el);
+    while (box.children.length > 3) { const last = box.lastElementChild; last.remove(); }
+    setTimeout(() => { el.classList.add('sai'); setTimeout(() => el.remove(), 400); }, 7600);
+  };
+  if (!reduce) { setTimeout(mostraAviso, 1200); setInterval(mostraAviso, 2800); }
+
+  // capas no fim
+  $('capas').innerHTML = list.map(g => `<img src="${g.media.cover}" alt="" loading="lazy" width="72" height="108">`).join('');
+
+  // ---------- montra ----------
+  let filtro = null, sel = 0, vis = list, timer = 0, t0 = 0, front = $('v1'), back = $('v2');
+  const DUR = 8000;
+  const conta = {}; for (const g of list) for (const c of g.cats) conta[c] = (conta[c] || 0) + 1;
+  const cats = Object.keys(conta).filter(c => conta[c] > 1).sort((a, b) => conta[b] - conta[a]).slice(0, 6);
+  const drawFiltros = () => { $('filtros').innerHTML = [['', 'Todos'], ...cats.map(c => [c, c])].map(([k, n]) => `<button aria-pressed="${(filtro || '') === k}" data-c="${esc(k)}">${esc(n)}</button>`).join(''); for (const b of $('filtros').children) b.onclick = () => { filtro = b.dataset.c || null; drawFiltros(); drawLista(); escolhe(0, true); }; };
+  const drawLista = () => {
+    vis = list.filter(g => !filtro || g.cats.includes(filtro));
+    $('lista').innerHTML = vis.map((g, i) => `<button class="item" role="tab" aria-selected="false" data-i="${i}"><img src="${g.media.cover}" alt="" loading="lazy"><span><b>${esc(g.name)}</b><small>${esc(g.kind)}</small></span><span class="barra"><i></i></span></button>`).join('');
+    for (const b of $('lista').children) b.onclick = () => escolhe(+b.dataset.i, true);
+  };
+  function escolhe(i, user) {
+    sel = (i + vis.length) % vis.length; const g = vis[sel]; if (!g) return;
+    [...$('lista').children].forEach((b, k) => { b.setAttribute('aria-selected', k === sel); if (k === sel && user) b.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
+    // troca suave entre dois vídeos
+    back.poster = g.media.poster || ''; back.src = g.media.video; back.play().catch(() => {}); back.style.opacity = 1; front.style.opacity = 0; [front, back] = [back, front];
+    setTimeout(() => { back.pause(); }, 700);
+    $('p-capa').src = g.media.cover; $('p-nome').textContent = g.name; $('p-frase').textContent = g.tag;
+    $('p-chips').innerHTML = [...(g.id === newest ? ['<span class="chip novo">Novo</span>'] : []), `<span class="chip">${esc(g.players)} jogadores</span>`, ...g.cats.slice(0, 3).map(c => `<span class="chip">${esc(c)}</span>`), g.ach ? `<span class="chip">${g.ach} conquistas</span>` : ''].join('');
+    t0 = performance.now(); if (user) pausaAte = performance.now() + 20000;
+  }
+  let pausaAte = 0;
+  (function avanca() {
+    const now = performance.now(), f = Math.min(1, (now - t0) / DUR);
+    const bar = $('lista').children[sel]?.querySelector('.barra i'); if (bar) bar.style.width = (now < pausaAte ? 100 : f * 100) + '%';
+    if (!reduce && now > pausaAte && f >= 1 && !document.hidden) escolhe(sel + 1, false);
+    requestAnimationFrame(avanca);
+  })();
+  $('palco').addEventListener('mouseenter', () => { pausaAte = performance.now() + 1e9; });
+  $('palco').addEventListener('mouseleave', () => { pausaAte = 0; t0 = performance.now(); });
+  $('ver').onclick = () => abrir(vis[sel]);
+  addEventListener('keydown', e => { if (dlgOpen() || !['ArrowDown', 'ArrowUp'].includes(e.key) || !document.activeElement?.closest?.('#lista')) return; e.preventDefault(); escolhe(sel + (e.key === 'ArrowDown' ? 1 : -1), true); $('lista').children[sel].focus(); });
+  drawFiltros(); drawLista(); escolhe(Math.max(0, vis.findIndex(g => g.id === newest)), false);
+
+  // ---------- janela de um jogo ----------
+  const dlg = $('dlg'), dlgOpen = () => dlg.open;
+  function abrir(g) {
+    const fotos = [{ t: 'v', src: g.media.video, poster: g.media.poster }, ...(g.media.shots || []).map(s => ({ t: 'i', src: s })), ...(g.media.art ? [{ t: 'i', src: g.media.art }] : [])];
+    const mostra = i => {
+      const f = fotos[i];
+      $('dlg-media').innerHTML = f.t === 'v' ? `<video src="${f.src}" poster="${f.poster}" muted loop playsinline ${reduce ? 'controls' : 'autoplay'}></video>` : `<img src="${f.src}" alt="Imagem de ${esc(g.name)}">`;
+      [...$('dlg-fotos').children].forEach((b, k) => b.setAttribute('aria-current', k === i));
+    };
+    $('dlg-t').textContent = g.name; $('dlg-tipo').textContent = g.kind; $('dlg-desc').textContent = g.desc;
+    const v = vj?.games?.[g.id];
+    $('dlg-factos').innerHTML = [['Jogadores', g.players], ['Género', g.cats.join(', ')], ['Conquistas', g.ach || '—'], ['Tamanho', v ? mb(v.size) : '—'], ['Versão', v ? v.version : '—'], ['Preço', 'Grátis']].map(([a, b]) => `<dt>${a}</dt><dd>${esc(b)}</dd>`).join('');
+    $('dlg-fotos').innerHTML = fotos.map((f, i) => `<button aria-label="${f.t === 'v' ? 'Vídeo' : 'Imagem ' + i}"><img src="${f.t === 'v' ? f.poster : f.src}" alt="" loading="lazy"></button>`).join('');
+    [...$('dlg-fotos').children].forEach((b, i) => { b.onclick = () => mostra(i); });
+    mostra(0); front.pause(); dlg.showModal();
+  }
+  $('fechar').onclick = () => dlg.close();
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', () => { $('dlg-media').innerHTML = ''; front.play().catch(() => {}); });
+})();
+</script>
+</body>
+</html>
